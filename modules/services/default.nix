@@ -7,7 +7,8 @@
     # Service modules will be imported here
     ./jellyfin.nix
     ./wireguard.nix
-    # ./storage.nix
+    ./ssh.nix
+    ./storage.nix
     ./blocky.nix
   ];
 }
