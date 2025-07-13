@@ -5,8 +5,7 @@
 }: {
   imports = [
     # Service modules will be imported here
-    # ./jellyfin.nix
-    # ./dns.nix
+    ./jellyfin.nix
     # ./wireguard.nix
     # ./storage.nix
     ./blocky.nix
