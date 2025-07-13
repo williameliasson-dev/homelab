@@ -6,7 +6,7 @@
   imports = [
     # Service modules will be imported here
     ./jellyfin.nix
-    # ./wireguard.nix
+    ./wireguard.nix
     # ./storage.nix
     ./blocky.nix
   ];
