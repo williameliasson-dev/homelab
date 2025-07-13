@@ -13,10 +13,10 @@
     in
     {
       nixosConfigurations = {
-        homelab = nixpkgs.lib.nixosSystem {
+        lennart = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/homelab/configuration.nix
+            ./hosts/lennart/configuration.nix
           ];
           specialArgs = {
             inherit nixpkgs-stable;
