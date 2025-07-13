@@ -1,10 +1,12 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config
+, lib
+, pkgs
+, ...
+}: {
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    
+
     # Jellyfin runs on port 8096 by default
     # Data directory: /var/lib/jellyfin
     # Config directory: /var/lib/jellyfin/config
@@ -39,17 +41,15 @@
   # };
 
   # Hardware acceleration (optional - uncomment if you have Intel or NVIDIA GPU)
-  # hardware.opengl = {
-  #   enable = true;
-  #   extraPackages = with pkgs; [
-  #     intel-media-driver  # For Intel GPUs
-  #     # nvidia-vaapi-driver  # For NVIDIA GPUs
-  #   ];
-  # };
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # For Intel GPUs
+    ];
+  };
 
-  # Add jellyfin user to any additional groups if needed
-  users.users.jellyfin.extraGroups = [ 
-    # "video"  # For hardware acceleration
-    # "render" # For hardware acceleration
+  users.users.jellyfin.extraGroups = [
+    "video" # For hardware acceleration
+    "render" # For hardware acceleration
   ];
 }

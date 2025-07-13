@@ -1,6 +1,9 @@
-{ config, pkgs, lib, nixpkgs-stable, ... }:
-
-{
+{ config
+, pkgs
+, lib
+, nixpkgs-stable
+, ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/services
@@ -31,7 +34,10 @@
   # Users
   users.users.homelab = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLhqTjuSrzwdJoVmJXQlcAXV+I0YJ9Fd/7Di+59sGb0 williameliasson5@gmail.com"
     ];
@@ -59,7 +65,10 @@
 
   # Enable flakes
   nix = {
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     gc = {
       automatic = true;
       dates = "weekly";
@@ -68,5 +77,5 @@
   };
 
   # Time zone
-  time.timeZone = "UTC";
+  time.timeZone = "Europe/Stockholm";
 }

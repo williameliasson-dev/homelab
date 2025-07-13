@@ -8,7 +8,13 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, agenix, ... }:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-stable
+    , agenix
+    , ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};

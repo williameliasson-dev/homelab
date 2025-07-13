@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config
+, lib
+, pkgs
+, ...
+}: {
   services.blocky = {
     enable = true;
     settings = {
@@ -18,7 +20,7 @@
       customDNS = {
         customTTL = "1h";
         mapping = {
-          "homelab.local" = "192.168.1.100";  # Adjust to your homelab IP
+          "homelab.local" = "192.168.1.100"; # Adjust to your homelab IP
         };
       };
 
@@ -41,7 +43,10 @@
           ];
         };
         clientGroupsBlock = {
-          default = [ "ads" "youtube" ];
+          default = [
+            "ads"
+            "youtube"
+          ];
         };
       };
 
@@ -66,7 +71,10 @@
 
   # Open firewall ports
   networking.firewall = {
-    allowedTCPPorts = [ 53 4000 ];
+    allowedTCPPorts = [
+      53
+      4000
+    ];
     allowedUDPPorts = [ 53 ];
   };
 

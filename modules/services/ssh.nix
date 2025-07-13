@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
-
-{
+{ config
+, lib
+, pkgs
+, ...
+}: {
   # SSH daemon configuration
   services.openssh = {
     enable = true;
@@ -9,7 +11,7 @@
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
     };
-    
+
     # SFTP subsystem configuration
     extraConfig = ''
       # SFTP-only configuration for storage access
