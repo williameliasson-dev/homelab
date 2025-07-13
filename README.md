@@ -1,6 +1,8 @@
 # Homelab NixOS Configuration
 
-A declarative NixOS configuration for your homelab setup.
+![IMG_3891](https://github.com/user-attachments/assets/978ebf83-1268-4edc-a12b-e6e5f2bbd873)
+
+A declarative NixOS configuration for my homelab setup.
 
 ## Structure
 
