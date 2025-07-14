@@ -21,8 +21,8 @@
         efiInstallAsRemovable = true; # This helps with older BIOS
       };
       efi.canTouchEfiVariables = false;
-      swraid.enable = true;
     };
+    swraid.enable = true;
   };
 
   # Networking
