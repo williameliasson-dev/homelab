@@ -22,7 +22,13 @@
       };
       efi.canTouchEfiVariables = false;
     };
-    swraid.enable = true;
+    swraid = {
+      enable = true;
+      mdadmConf = ''
+        MAILADDR root
+        PROGRAM /run/current-system/sw/bin/logger
+      '';
+    };
   };
 
   # Networking
