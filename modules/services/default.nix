@@ -10,5 +10,6 @@
     ./ssh.nix
     ./storage.nix
     ./blocky.nix
+    ./qbittorrent.nix
   ];
 }

@@ -20,7 +20,7 @@
       customDNS = {
         customTTL = "1h";
         mapping = {
-          "homelab.local" = "192.168.1.100"; # Adjust to your homelab IP
+          "homelab.local" = "192.168.0.109";
         };
       };
 
