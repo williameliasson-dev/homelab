@@ -3,7 +3,7 @@ let
   william = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLhqTjuSrzwdJoVmJXQlcAXV+I0YJ9Fd/7Di+59sGb0 williameliasson5@gmail.com"; # Replace with your actual key
 
   # System SSH host keys (will be generated on the server)
-  homelab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF92aaEoSPS69P1B6CBLV6WCeQ/Mq3B5DDYDuJAp4pL+ homelab"; # Replace with server host key
+  homelab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqwyQ/dRkEHsDUQn2UIDxqFiIS3JFHlA+Pv1rdlkI0v root@homelab"; # Replace with server host key
 
   # All users who can decrypt secrets
   users = [ william ];
