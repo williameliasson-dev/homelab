@@ -14,68 +14,71 @@
   # Boot configuration
   boot = {
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        device = "nodev";
+        efiInstallAsRemovable = true; # This helps with older BIOS
+      };
+      efi.canTouchEfiVariables = false;
+      swraid.enable = true;
     };
-    # Enable mdadm for software RAID
-    swraid.enable = true;
-  };
 
-  # Networking
-  networking = {
-    hostName = "homelab";
-    networkmanager.enable = true;
-    firewall = {
+    # Networking
+    networking = {
+      hostName = "homelab";
+      networkmanager.enable = true;
+      firewall = {
+        enable = true;
+        # Ports will be opened by individual services
+      };
+    };
+
+    # Users
+    users.users.homelab = {
+      isNormalUser = true;
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+      ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLhqTjuSrzwdJoVmJXQlcAXV+I0YJ9Fd/7Di+59sGb0 williameliasson5@gmail.com"
+      ];
+    };
+
+    # SSH
+    services.openssh = {
       enable = true;
-      # Ports will be opened by individual services
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
     };
-  };
 
-  # Users
-  users.users.homelab = {
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
+    # System packages
+    environment.systemPackages = with pkgs; [
+      git
+      htop
+      tmux
+      curl
+      wget
+      vim
+      tree
     ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLhqTjuSrzwdJoVmJXQlcAXV+I0YJ9Fd/7Di+59sGb0 williameliasson5@gmail.com"
-    ];
-  };
 
-  # SSH
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
-      KbdInteractiveAuthentication = false;
+    # Enable flakes
+    nix = {
+      settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 30d";
+      };
     };
-  };
 
-  # System packages
-  environment.systemPackages = with pkgs; [
-    git
-    htop
-    tmux
-    curl
-    wget
-    vim
-    tree
-  ];
-
-  # Enable flakes
-  nix = {
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 30d";
-    };
-  };
-
-  # Time zone
-  time.timeZone = "Europe/Stockholm";
-}
+    # Time zone
+    time.timeZone = "Europe/Stockholm";
+  }
