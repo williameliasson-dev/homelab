@@ -53,7 +53,7 @@
   # };
 
   # Hardware acceleration (optional - uncomment if you have Intel or NVIDIA GPU)
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # For Intel GPUs

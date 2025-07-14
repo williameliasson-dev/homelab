@@ -40,6 +40,7 @@
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-uuid/75285ba7-6b02-40de-bec7-30088d2817f0";
     fsType = "ext4";
+    options = [ "defaults" "user_xattr" "acl" ];
   };
 
   swapDevices = [
