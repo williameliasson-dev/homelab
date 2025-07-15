@@ -51,6 +51,12 @@
       chown -R qbittorrent:qbittorrent /mnt/storage/downloads
       chmod -R 755 /var/lib/qbittorrent
       chmod -R 755 /mnt/storage/downloads
+      # Give qbittorrent user access to jellyfin media directories
+      usermod -a -G jellyfin qbittorrent
+      # Set group write permissions on media directories if they exist
+      if [ -d "/mnt/storage/media" ]; then
+        chmod -R 775 /mnt/storage/media
+      fi
     '';
   };
 
