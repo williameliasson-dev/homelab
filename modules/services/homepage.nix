@@ -97,4 +97,7 @@
       }
     ];
   };
+
+  # Configure homepage to run as root to bind to port 80
+  systemd.services.homepage-dashboard.serviceConfig.User = lib.mkForce "root";
 }
