@@ -113,5 +113,9 @@
       StateDirectory = "homepage-dashboard";
       Restart = "on-failure";
     };
+    environment = {
+      PORT = "80";
+      HOMEPAGE_VAR_PORT = "80";
+    };
   };
 }
