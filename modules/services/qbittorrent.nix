@@ -35,12 +35,24 @@
   };
 
   # Create downloads directory on storage
-  systemd.tmpfiles.rules = [
-    "d /var/lib/qbittorrent 0755 qbittorrent qbittorrent -"
-    "d /mnt/storage/downloads 0755 qbittorrent qbittorrent -"
-    "d /mnt/storage/downloads/incomplete 0755 qbittorrent qbittorrent -"
-    "d /mnt/storage/downloads/complete 0755 qbittorrent qbittorrent -"
-  ];
+  systemd.services.qbittorrent-setup-dirs = {
+    description = "Create qBittorrent download directories";
+    wantedBy = [ "qbittorrent.service" ];
+    before = [ "qbittorrent.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      mkdir -p /var/lib/qbittorrent
+      mkdir -p /mnt/storage/downloads/incomplete
+      mkdir -p /mnt/storage/downloads/complete
+      chown -R qbittorrent:qbittorrent /var/lib/qbittorrent
+      chown -R qbittorrent:qbittorrent /mnt/storage/downloads
+      chmod -R 755 /var/lib/qbittorrent
+      chmod -R 755 /mnt/storage/downloads
+    '';
+  };
 
   # Open firewall for web UI
   networking.firewall.allowedTCPPorts = [ 8080 ];
