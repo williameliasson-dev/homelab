@@ -98,11 +98,20 @@
     ];
   };
 
-  # Configure homepage systemd service to run as root
-  systemd.services.homepage-dashboard = {
+  # Override the entire homepage service to run as root
+  systemd.services.homepage-dashboard = lib.mkForce {
+    description = "Homepage Dashboard";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      User = lib.mkForce "root";
-      Group = lib.mkForce "root";
+      User = "root";
+      Group = "root";
+      DynamicUser = false;
+      PrivateUsers = false;
+      ExecStart = "${pkgs.homepage-dashboard}/bin/homepage";
+      WorkingDirectory = "/var/lib/homepage-dashboard";
+      StateDirectory = "homepage-dashboard";
+      Restart = "on-failure";
     };
   };
 }
