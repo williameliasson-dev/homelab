@@ -12,5 +12,6 @@
     ./blocky.nix
     ./qbittorrent.nix
     ./storage-setup.nix
+    ./homepage.nix
   ];
 }
