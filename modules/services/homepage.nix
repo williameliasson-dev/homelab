@@ -12,17 +12,6 @@
       title = "Homelab Dashboard";
       theme = "dark";
       color = "slate";
-      
-      layout = {
-        "Media & Downloads" = {
-          style = "row";
-          columns = 2;
-        };
-        "System" = {
-          style = "row";
-          columns = 3;
-        };
-      };
     };
     
     services = [
@@ -53,30 +42,6 @@
               description = "DNS Ad Blocker";
             };
           }
-          {
-            "System Monitor" = {
-              icon = "glances.png";
-              href = "#";
-              description = "System Stats";
-              widget = {
-                type = "resources";
-                cpu = true;
-                memory = true;
-                disk = "/";
-              };
-            };
-          }
-          {
-            "RAID Storage" = {
-              icon = "disk.png";
-              href = "#";
-              description = "RAID 6 Array";
-              widget = {
-                type = "disk";
-                path = "/mnt/storage";
-              };
-            };
-          }
         ];
       }
     ];
@@ -87,12 +52,6 @@
           cpu = true;
           memory = true;
           disk = "/";
-        };
-      }
-      {
-        search = {
-          provider = "duckduckgo";
-          target = "_blank";
         };
       }
     ];
