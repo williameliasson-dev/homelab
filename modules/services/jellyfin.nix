@@ -14,25 +14,6 @@
     # Log directory: /var/log/jellyfin
   };
 
-  # Create media directories with proper systemd service
-  systemd.services.jellyfin-setup-dirs = {
-    description = "Create Jellyfin media directories";
-    wantedBy = [ "jellyfin.service" ];
-    before = [ "jellyfin.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-    };
-    script = ''
-      # Only create directories if they don't exist
-      if [ ! -d "/mnt/storage/media" ]; then
-        mkdir -p /mnt/storage/media/movies
-        mkdir -p /mnt/storage/media/shows
-        chown -R jellyfin:jellyfin /mnt/storage/media
-        chmod -R 755 /mnt/storage/media
-      fi
-    '';
-  };
 
   # Optional: Create symbolic links in jellyfin's data directory for easier management
   # systemd.services.jellyfin-media-links = {

@@ -8,8 +8,9 @@
     ./jellyfin.nix
     ./wireguard.nix
     ./ssh.nix
-    ./storage.nix
+    ./sftp.nix
     ./blocky.nix
     ./qbittorrent.nix
+    ./storage-setup.nix
   ];
 }
