@@ -20,8 +20,8 @@
       mkdir -p /mnt/storage/downloads/complete
       
       # Set proper ownership and permissions
-      # Media directories: owned by jellyfin, group jellyfin, group-writable
-      chown -R jellyfin:jellyfin /mnt/storage/media
+      # Media directories: owned by jellyfin, group qbittorrent, group-writable
+      chown -R jellyfin:qbittorrent /mnt/storage/media
       chmod -R 775 /mnt/storage/media
       
       # Downloads directories: owned by qbittorrent, group qbittorrent
