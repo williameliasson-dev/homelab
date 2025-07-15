@@ -116,6 +116,7 @@
     environment = {
       PORT = "80";
       HOMEPAGE_VAR_PORT = "80";
+      HOMEPAGE_ALLOWED_HOSTS = "homelab.local,localhost,192.168.0.109";
     };
   };
 }
