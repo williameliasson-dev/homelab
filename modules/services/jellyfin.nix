@@ -44,5 +44,6 @@
   users.users.jellyfin.extraGroups = [
     "video" # For hardware acceleration
     "render" # For hardware acceleration
+    "storage" # For shared storage access
   ];
 }

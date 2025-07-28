@@ -16,7 +16,6 @@
     extraConfig = ''
       # SFTP-only configuration for storage access
       Match Group sftpusers
-        ChrootDirectory /mnt/storage
         ForceCommand internal-sftp
         AllowTcpForwarding no
         X11Forwarding no

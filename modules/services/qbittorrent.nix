@@ -9,7 +9,7 @@
     group = "qbittorrent";
     home = "/var/lib/qbittorrent";
     createHome = true;
-    extraGroups = [ "users" "jellyfin" ];
+    extraGroups = [ "storage" ];
   };
   
   users.groups.qbittorrent = {};

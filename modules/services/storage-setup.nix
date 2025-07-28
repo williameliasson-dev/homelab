@@ -3,6 +3,9 @@
 , pkgs
 , ...
 }: {
+  # Create shared storage group
+  users.groups.storage = { };
+
   systemd.services.storage-setup = {
     description = "Setup storage directories for all services";
     wantedBy = [ "multi-user.target" ];
@@ -13,20 +16,24 @@
       RemainAfterExit = true;
     };
     script = ''
+      # Set ownership and permissions for the storage mount point
+      chown root:storage /mnt/storage
+      chmod 775 /mnt/storage
+      
       # Create all required directories
       mkdir -p /mnt/storage/media/movies
       mkdir -p /mnt/storage/media/shows
       mkdir -p /mnt/storage/downloads/incomplete
       mkdir -p /mnt/storage/downloads/complete
       
-      # Set proper ownership and permissions
-      # Media directories: owned by jellyfin, group qbittorrent, group-writable
-      chown -R jellyfin:qbittorrent /mnt/storage/media
+      # Set proper ownership and permissions with shared storage group
+      # Media directories: owned by jellyfin, group storage, group-writable
+      chown -R jellyfin:storage /mnt/storage/media
       chmod -R 775 /mnt/storage/media
       
-      # Downloads directories: owned by qbittorrent, group qbittorrent
-      chown -R qbittorrent:qbittorrent /mnt/storage/downloads
-      chmod -R 755 /mnt/storage/downloads
+      # Downloads directories: owned by qbittorrent, group storage, group-writable
+      chown -R qbittorrent:storage /mnt/storage/downloads
+      chmod -R 775 /mnt/storage/downloads
       
       # Ensure service user home directories exist
       mkdir -p /var/lib/jellyfin
