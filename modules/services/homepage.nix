@@ -57,11 +57,19 @@
     ];
   };
 
-  # Override only the user settings to run as root, preserve the rest
+  # Override to run as root with proper capabilities for port 80
   systemd.services.homepage-dashboard.serviceConfig = {
     User = lib.mkForce "root";
     Group = lib.mkForce "root";
     DynamicUser = lib.mkForce false;
     PrivateUsers = lib.mkForce false;
+    AmbientCapabilities = lib.mkForce "CAP_NET_BIND_SERVICE";
+    CapabilityBoundingSet = lib.mkForce "CAP_NET_BIND_SERVICE";
+  };
+  
+  # Ensure environment variables are properly set
+  systemd.services.homepage-dashboard.environment = {
+    PORT = lib.mkForce "80";
+    HOMEPAGE_VAR_PORT = lib.mkForce "80";
   };
 }
