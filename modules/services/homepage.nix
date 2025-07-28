@@ -57,25 +57,11 @@
     ];
   };
 
-  # Override the entire homepage service to run as root
-  systemd.services.homepage-dashboard = lib.mkForce {
-    description = "Homepage Dashboard";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      User = "root";
-      Group = "root";
-      DynamicUser = false;
-      PrivateUsers = false;
-      ExecStart = "${pkgs.homepage-dashboard}/bin/homepage";
-      WorkingDirectory = "/var/lib/homepage-dashboard";
-      StateDirectory = "homepage-dashboard";
-      Restart = "on-failure";
-    };
-    environment = {
-      PORT = "80";
-      HOMEPAGE_VAR_PORT = "80";
-      HOMEPAGE_ALLOWED_HOSTS = "homelab.local,localhost,192.168.0.109";
-    };
+  # Override only the user settings to run as root, preserve the rest
+  systemd.services.homepage-dashboard.serviceConfig = {
+    User = lib.mkForce "root";
+    Group = lib.mkForce "root";
+    DynamicUser = lib.mkForce false;
+    PrivateUsers = lib.mkForce false;
   };
 }
