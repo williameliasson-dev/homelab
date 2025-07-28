@@ -54,6 +54,12 @@
           disk = "/";
         };
       }
+      {
+        resources = {
+          disk = "/mnt/storage";
+          label = "Storage (RAID)";
+        };
+      }
     ];
   };
 
