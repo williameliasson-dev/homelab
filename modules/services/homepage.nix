@@ -71,5 +71,6 @@
   systemd.services.homepage-dashboard.environment = {
     PORT = lib.mkForce "80";
     HOMEPAGE_VAR_PORT = lib.mkForce "80";
+    HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homelab.local,localhost,127.0.0.1,192.168.0.109";
   };
 }
