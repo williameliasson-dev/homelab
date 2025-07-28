@@ -1,6 +1,6 @@
 let
   # Your SSH public keys (add your actual public keys here)
-  william = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHLhqTjuSrzwdJoVmJXQlcAXV+I0YJ9Fd/7Di+59sGb0 williameliasson5@gmail.com"; # Replace with your actual key
+  william = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGLHJ09aA0rj9RkI7XjzK51hGNV2/nnANikt7f5aSLZP williameliasson5@gmail.com"; # Replace with your actual key
 
   # System SSH host keys (will be generated on the server)
   homelab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBqwyQ/dRkEHsDUQn2UIDxqFiIS3JFHlA+Pv1rdlkI0v root@homelab"; # Replace with server host key
