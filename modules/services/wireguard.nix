@@ -31,7 +31,7 @@
       # Example peer - add your actual client public keys
       {
         # Client public key (safe to store in git)
-        publicKey = "EBSnpQV3SJnxUMlz1mibyCUxg8X0vhXzS0RBho0Pa0o=";
+        publicKey = "GLuMPNta27mYlAfJYPf1VxUs0nY8lAhoDx2BgUCHIXg=";
 
         # IP assigned to this client
         allowedIPs = [ "10.100.0.2/32" ];
