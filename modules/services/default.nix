@@ -13,5 +13,6 @@
     ./qbittorrent.nix
     ./storage-setup.nix
     ./homepage.nix
+    ./vaultwarden.nix
   ];
 }

@@ -21,6 +21,12 @@ in
     homelab
   ];
 
+  # Vaultwarden admin token
+  "secrets/vaultwarden-admin-token.age".publicKeys = [
+    william
+    homelab
+  ];
+
   # Example: other secrets that might be needed
   # "secrets/api-keys.age".publicKeys = all;
   # "secrets/passwords.age".publicKeys = all;
