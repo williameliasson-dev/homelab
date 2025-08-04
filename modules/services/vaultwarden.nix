@@ -40,7 +40,7 @@
       DATABASE_URL = "/mnt/storage/vaultwarden/db.sqlite3";
 
       # Web vault configuration
-      WEB_VAULT_ENABLED = true;
+      WEB_VAULT_ENABLED = false;
 
       # Security settings
       WEBSOCKET_ENABLED = true;
