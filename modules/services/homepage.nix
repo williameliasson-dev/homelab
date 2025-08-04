@@ -7,13 +7,13 @@
     enable = true;
     openFirewall = true;
     listenPort = 80;
-    
+
     settings = {
       title = "Homelab Dashboard";
       theme = "dark";
       color = "slate";
     };
-    
+
     services = [
       {
         "Media & Downloads" = [
@@ -42,10 +42,17 @@
               description = "DNS Ad Blocker";
             };
           }
+          {
+            "Vaultwarden Admin" = {
+              icon = "vaultwarden.png";
+              href = "http://homelab.local:8222/admin";
+              description = "Password Manager Admin";
+            };
+          }
         ];
       }
     ];
-    
+
     widgets = [
       {
         resources = {
@@ -72,7 +79,7 @@
     AmbientCapabilities = lib.mkForce "CAP_NET_BIND_SERVICE";
     CapabilityBoundingSet = lib.mkForce "CAP_NET_BIND_SERVICE";
   };
-  
+
   # Ensure environment variables are properly set
   systemd.services.homepage-dashboard.environment = {
     PORT = lib.mkForce "80";
