@@ -17,6 +17,9 @@
     environment = {
       DATA_FOLDER = "/mnt/storage/vaultwarden";
     };
+    serviceConfig = {
+      ReadWritePaths = [ "/mnt/storage/vaultwarden" ];
+    };
   };
 
   services.vaultwarden = {
