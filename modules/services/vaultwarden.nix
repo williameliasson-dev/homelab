@@ -62,7 +62,7 @@
       # SMTP_PASSWORD = "your-app-password";
 
       # Disable registration by default (set to true if you want open registration)
-      SIGNUPS_ALLOWED = false;
+      SIGNUPS_ALLOWED = true;
 
       # Allow existing users to invite new users
       INVITATIONS_ALLOWED = false;
