@@ -48,7 +48,7 @@
       WEBSOCKET_PORT = 3012;
 
       # Domain configuration (update this to your domain)
-      # DOMAIN = "https://vault.yourdomain.com";
+      DOMAIN = "http://homelab.local:8222";
 
       # Admin panel - token loaded from environmentFile
       # ADMIN_TOKEN will be loaded from the environment file
