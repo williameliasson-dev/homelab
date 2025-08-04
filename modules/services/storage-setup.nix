@@ -35,10 +35,10 @@
       chown -R qbittorrent:storage /mnt/storage/downloads
       chmod -R 775 /mnt/storage/downloads
       
-      # Vaultwarden directory: owned by vaultwarden, group storage, group-writable
+      # Vaultwarden directory: owned by vaultwarden, group storage, full permissions
       mkdir -p /mnt/storage/vaultwarden
-      chown -R vaultwarden:storage /mnt/storage/vaultwarden
-      chmod -R 775 /mnt/storage/vaultwarden
+      chown vaultwarden:storage /mnt/storage/vaultwarden
+      chmod 755 /mnt/storage/vaultwarden
       
       # Ensure service user home directories exist
       mkdir -p /var/lib/jellyfin

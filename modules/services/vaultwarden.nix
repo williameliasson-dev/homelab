@@ -10,10 +10,13 @@
     group = "vaultwarden";
     mode = "0400";
   };
-  # Ensure vaultwarden starts after storage setup
+  # Ensure vaultwarden starts after storage setup and has proper environment
   systemd.services.vaultwarden = {
     after = [ "storage-setup.service" ];
     wants = [ "storage-setup.service" ];
+    environment = {
+      DATA_FOLDER = "/mnt/storage/vaultwarden";
+    };
   };
 
   services.vaultwarden = {
