@@ -21,8 +21,8 @@ in
     homelab
   ];
 
-  # Vaultwarden admin token
-  "secrets/vaultwarden-admin-token.age".publicKeys = [
+  # Vaultwarden environment variables (admin token, SMTP, etc.)
+  "secrets/vaultwarden-env.age".publicKeys = [
     william
     homelab
   ];

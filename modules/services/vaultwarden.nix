@@ -4,8 +4,8 @@
 , ...
 }: {
   # Import age secrets
-  age.secrets.vaultwarden-admin-token = {
-    file = ../../secrets/vaultwarden-admin-token.age;
+  age.secrets.vaultwarden-env = {
+    file = ../../secrets/vaultwarden-env.age;
     owner = "vaultwarden";
     group = "vaultwarden";
     mode = "0400";
@@ -26,7 +26,7 @@
     enable = true;
 
     # Environment file containing secrets
-    environmentFile = config.age.secrets.vaultwarden-admin-token.path;
+    environmentFile = config.age.secrets.vaultwarden-env.path;
 
     config = {
       # Basic configuration
