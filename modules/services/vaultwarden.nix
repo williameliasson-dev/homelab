@@ -10,9 +10,15 @@
     group = "vaultwarden";
     mode = "0400";
   };
+  # Ensure vaultwarden starts after storage setup
+  systemd.services.vaultwarden = {
+    after = [ "storage-setup.service" ];
+    wants = [ "storage-setup.service" ];
+  };
+
   services.vaultwarden = {
     enable = true;
-    
+
     # Environment file containing secrets
     environmentFile = config.age.secrets.vaultwarden-admin-token.path;
 
