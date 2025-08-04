@@ -9,7 +9,7 @@
   systemd.services.storage-setup = {
     description = "Setup storage directories for all services";
     wantedBy = [ "multi-user.target" ];
-    before = [ "jellyfin.service" "qbittorrent.service" ];
+    before = [ "jellyfin.service" "qbittorrent.service" "vaultwarden.service" ];
     after = [ "mnt-storage.mount" ];
     serviceConfig = {
       Type = "oneshot";
@@ -34,6 +34,11 @@
       # Downloads directories: owned by qbittorrent, group storage, group-writable
       chown -R qbittorrent:storage /mnt/storage/downloads
       chmod -R 775 /mnt/storage/downloads
+      
+      # Vaultwarden directory: owned by vaultwarden, group storage, group-writable
+      mkdir -p /mnt/storage/vaultwarden
+      chown -R vaultwarden:storage /mnt/storage/vaultwarden
+      chmod -R 775 /mnt/storage/vaultwarden
       
       # Ensure service user home directories exist
       mkdir -p /var/lib/jellyfin

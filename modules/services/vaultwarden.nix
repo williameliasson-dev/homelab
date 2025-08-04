@@ -21,11 +21,11 @@
       ROCKET_ADDRESS = "0.0.0.0";
       ROCKET_PORT = 8222;
 
-      # Data directory (default: /var/lib/vaultwarden)
-      DATA_FOLDER = "/var/lib/vaultwarden";
+      # Data directory on RAID storage for redundancy
+      DATA_FOLDER = "/mnt/storage/vaultwarden";
 
-      # Database configuration (SQLite by default)
-      DATABASE_URL = "/var/lib/vaultwarden/db.sqlite3";
+      # Database configuration (SQLite on RAID storage)
+      DATABASE_URL = "/mnt/storage/vaultwarden/db.sqlite3";
 
       # Web vault configuration
       WEB_VAULT_ENABLED = true;
@@ -94,8 +94,8 @@
   #   };
   # };
 
-  # Ensure vaultwarden user has access to storage group if needed
-  # users.users.vaultwarden.extraGroups = [
-  #  "storage" # For shared storage access if using network storage
-  # ];
+  # Ensure vaultwarden user has access to storage group
+  users.users.vaultwarden.extraGroups = [
+    "storage" # For shared RAID storage access
+  ];
 }
