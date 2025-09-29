@@ -17,14 +17,18 @@
         http = 4000;
       };
 
-      # Upstream DNS servers
+      # Upstream DNS servers (with IPv6 support for Apple devices)
       upstreams = {
         groups = {
           default = [
             "1.1.1.1"
             "1.0.0.1"
+            "2606:4700:4700::1111"
+            "2606:4700:4700::1001"
             "8.8.8.8"
             "8.8.4.4"
+            "2001:4860:4860::8888"
+            "2001:4860:4860::8844"
           ];
         };
       };
@@ -69,6 +73,18 @@
         logRetentionDays = 7;
       };
 
+      # Caching configuration (helps with Apple device compatibility)
+      caching = {
+        minTime = "5m";
+        maxTime = "30m";
+        cacheTimeNegative = "30m";
+      };
+
+      # Enable EDNS for better compatibility
+      ede = {
+        enable = true;
+      };
+
       # Prometheus metrics
       prometheus = {
         enable = true;
@@ -77,13 +93,16 @@
     };
   };
 
-  # Open firewall ports
+  # Open firewall ports (IPv4 and IPv6)
   networking.firewall = {
     allowedTCPPorts = [
       53
       4000
     ];
     allowedUDPPorts = [ 53 ];
+    # Allow IPv6 DNS traffic
+    allowedTCPPortRanges = [];
+    allowedUDPPortRanges = [];
   };
 
   # Optional: Set this server as the system DNS
