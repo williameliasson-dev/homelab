@@ -6,14 +6,27 @@
   services.blocky = {
     enable = true;
     settings = {
+      # Log configuration
+      log = {
+        level = "info";
+      };
+
+      # Port configuration
+      ports = {
+        dns = 53;
+        http = 4000;
+      };
+
       # Upstream DNS servers
-      upstream = {
-        default = [
-          "1.1.1.1"
-          "1.0.0.1"
-          "8.8.8.8"
-          "8.8.4.4"
-        ];
+      upstreams = {
+        groups = {
+          default = [
+            "1.1.1.1"
+            "1.0.0.1"
+            "8.8.8.8"
+            "8.8.4.4"
+          ];
+        };
       };
 
       # Custom DNS mappings for local services
@@ -26,7 +39,7 @@
 
       # Ad blocking configuration
       blocking = {
-        blackLists = {
+        denylists = {
           ads = [
             "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
             "https://someonewhocares.org/hosts/zero/hosts"
@@ -37,7 +50,7 @@
             "https://raw.githubusercontent.com/kboghdady/youTube_ads_4_pi-hole/master/black.list"
           ];
         };
-        whiteLists = {
+        allowlists = {
           ads = [
             "https://raw.githubusercontent.com/anudeepND/whitelist/master/domains/whitelist.txt"
           ];
@@ -61,11 +74,6 @@
         enable = true;
         path = "/metrics";
       };
-
-      # Web interface and DNS settings
-      httpPort = 4000;
-      port = 53;
-      logLevel = "info";
     };
   };
 
