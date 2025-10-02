@@ -43,7 +43,7 @@
       customDNS = {
         customTTL = "1h";
         mapping = {
-          "homelab.local" = "192.168.0.109";
+          "homelab.local" = "192.168.0.105";
         };
       };
 
@@ -107,8 +107,8 @@
     ];
     allowedUDPPorts = [ 53 ];
     # Allow IPv6 DNS traffic
-    allowedTCPPortRanges = [];
-    allowedUDPPortRanges = [];
+    allowedTCPPortRanges = [ ];
+    allowedUDPPortRanges = [ ];
   };
 
   # Optional: Set this server as the system DNS
