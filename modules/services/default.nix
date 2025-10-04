@@ -14,5 +14,6 @@
     ./storage-setup.nix
     ./homepage.nix
     ./vaultwarden.nix
+    ./auto-rebuild.nix
   ];
 }

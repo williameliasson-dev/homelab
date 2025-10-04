@@ -1,9 +1,11 @@
-{ config
-, pkgs
-, lib
-, nixpkgs-stable
-, ...
-}: {
+{
+  config,
+  pkgs,
+  lib,
+  nixpkgs-stable,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/services
@@ -88,4 +90,13 @@
 
   # Time zone
   time.timeZone = "Europe/Stockholm";
+
+  # Auto-rebuild on git updates
+  services.auto-rebuild = {
+    enable = true;
+    interval = "*/1 * * * *"; # Every 1 minutes
+    repoPath = "/etc/nixos";
+    flakePath = "/etc/nixos";
+    hostName = "lennart";
+  };
 }
