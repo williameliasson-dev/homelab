@@ -99,4 +99,16 @@
     flakePath = "/etc/nixos";
     hostName = "lennart";
   };
+
+  # NFS Server
+  services.nfs-server = {
+    enable = true;
+    exports = ''
+      # Export storage to local network (192.168.0.0/24)
+      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100)
+
+      # Export to Wireguard VPN clients (10.100.0.0/24)
+      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100)
+    '';
+  };
 }

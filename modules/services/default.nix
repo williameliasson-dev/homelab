@@ -15,5 +15,6 @@
     ./homepage.nix
     ./vaultwarden.nix
     ./auto-rebuild.nix
+    ./nfs.nix
   ];
 }
