@@ -106,16 +106,16 @@
     enable = true;
     exports =
       let
-        homelabUid = toString config.users.users.homelab.uid;
-        storageGid = toString config.users.groups.storage.gid;
+        nfsUid = toString config.users.users.nfsuser.uid;
+        nfsGid = toString config.users.groups.nfsuser.gid;
       in
       ''
         # Export storage to local network (192.168.0.0/24)
-        # Map all remote users to homelab user with storage group for write access
-        /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${homelabUid},anongid=${storageGid})
+        # Map all remote users to nfsuser (who is in storage group) for write access
+        /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${nfsUid},anongid=${nfsGid})
 
         # Export to Wireguard VPN clients (10.100.0.0/24)
-        /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${homelabUid},anongid=${storageGid})
+        /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${nfsUid},anongid=${nfsGid})
       '';
   };
 }

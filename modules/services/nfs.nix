@@ -21,6 +21,15 @@ in
   };
 
   config = mkIf cfg.enable {
+    # Create NFS user for remote access
+    users.users.nfsuser = {
+      isSystemUser = true;
+      group = "nfsuser";
+      extraGroups = [ "storage" ];
+    };
+
+    users.groups.nfsuser = {};
+
     # Enable NFS server
     services.nfs.server = {
       enable = true;
