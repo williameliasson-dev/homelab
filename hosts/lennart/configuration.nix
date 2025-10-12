@@ -49,6 +49,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "storage"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGLHJ09aA0rj9RkI7XjzK51hGNV2/nnANikt7f5aSLZP williameliasson5@gmail.com"
@@ -103,12 +104,18 @@
   # NFS Server
   services.nfs-server = {
     enable = true;
-    exports = ''
-      # Export storage to local network (192.168.0.0/24)
-      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100)
+    exports =
+      let
+        homelabUid = toString config.users.users.homelab.uid;
+        storageGid = toString config.users.groups.storage.gid;
+      in
+      ''
+        # Export storage to local network (192.168.0.0/24)
+        # Map all remote users to homelab user with storage group for write access
+        /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${homelabUid},anongid=${storageGid})
 
-      # Export to Wireguard VPN clients (10.100.0.0/24)
-      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=1000,anongid=100)
-    '';
+        # Export to Wireguard VPN clients (10.100.0.0/24)
+        /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${homelabUid},anongid=${storageGid})
+      '';
   };
 }
