@@ -35,10 +35,11 @@ in
           "browseable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
-          "create mask" = "0775";
+          "create mask" = "0664";
           "directory mask" = "0775";
           "force group" = "storage";
-          "valid users" = "@storage";
+          "valid users" = "homelab";
+          "write list" = "homelab";
         };
       };
     };
