@@ -16,5 +16,6 @@
     ./vaultwarden.nix
     ./auto-rebuild.nix
     ./nfs.nix
+    ./samba.nix
   ];
 }

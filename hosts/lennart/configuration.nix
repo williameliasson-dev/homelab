@@ -109,4 +109,7 @@
       /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=985)
     '';
   };
+
+  # Samba Server
+  services.samba-server.enable = true;
 }
