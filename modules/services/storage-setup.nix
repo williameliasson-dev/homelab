@@ -39,7 +39,15 @@
       mkdir -p /mnt/storage/vaultwarden
       chown vaultwarden:storage /mnt/storage/vaultwarden
       chmod 755 /mnt/storage/vaultwarden
-      
+
+      # Notes directory: owned by sftp, group storage, group-writable for NFS access
+      if [ -d /mnt/storage/notes ]; then
+        chown -R sftp:storage /mnt/storage/notes
+        chmod -R 775 /mnt/storage/notes
+        # Make sure new files/dirs inherit group ownership
+        find /mnt/storage/notes -type d -exec chmod g+s {} \;
+      fi
+
       # Ensure service user home directories exist
       mkdir -p /var/lib/jellyfin
       mkdir -p /var/lib/qbittorrent

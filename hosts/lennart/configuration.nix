@@ -105,8 +105,8 @@
   services.nfs-server = {
     enable = true;
     exports = ''
-      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check)
-      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check)
+      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=985)
+      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=985)
     '';
   };
 }
