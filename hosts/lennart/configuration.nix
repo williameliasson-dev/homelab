@@ -104,18 +104,9 @@
   # NFS Server
   services.nfs-server = {
     enable = true;
-    exports =
-      let
-        nfsUid = toString config.users.users.nfsuser.uid;
-        nfsGid = toString config.users.groups.nfsuser.gid;
-      in
-      ''
-        # Export storage to local network (192.168.0.0/24)
-        # Map all remote users to nfsuser (who is in storage group) for write access
-        /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${nfsUid},anongid=${nfsGid})
-
-        # Export to Wireguard VPN clients (10.100.0.0/24)
-        /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=${nfsUid},anongid=${nfsGid})
-      '';
+    exports = ''
+      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check)
+      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check)
+    '';
   };
 }
