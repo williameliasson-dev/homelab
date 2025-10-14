@@ -43,7 +43,7 @@
       customDNS = {
         customTTL = "1h";
         mapping = {
-          "homelab.local" = "192.168.0.105";
+          "homelab.local" = "192.168.0.109";
         };
       };
 

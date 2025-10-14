@@ -27,6 +27,15 @@ in
           "hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
           "map to guest" = "bad user";
+          # iOS compatibility
+          "vfs objects" = "fruit streams_xattr";
+          "fruit:metadata" = "stream";
+          "fruit:model" = "MacSamba";
+          "fruit:posix_rename" = "yes";
+          "fruit:veto_appledouble" = "no";
+          "fruit:nfs_aces" = "no";
+          "fruit:wipe_intentionally_left_blank_rfork" = "yes";
+          "fruit:delete_empty_adfiles" = "yes";
         };
 
         # Main storage share
@@ -34,12 +43,14 @@ in
           "path" = "/mnt/storage";
           "browseable" = "yes";
           "read only" = "no";
+          "writable" = "yes";
           "guest ok" = "no";
           "create mask" = "0664";
           "directory mask" = "0775";
           "force group" = "storage";
           "valid users" = "homelab";
           "write list" = "homelab";
+          "force user" = "homelab";
         };
       };
     };
