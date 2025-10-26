@@ -46,9 +46,6 @@ in
     # Open firewall if requested
     networking.firewall.allowedTCPPorts = lib.mkIf cfg.openFirewall [ cfg.port ];
 
-    # Add immich user to storage group for shared storage access
-    users.users.immich.extraGroups = [ "storage" ];
-
     # Hardware acceleration for video processing
     hardware.graphics = {
       enable = true;
@@ -57,6 +54,7 @@ in
       ];
     };
 
+    # Add immich user to necessary groups
     users.users.immich.extraGroups = [
       "video" # For hardware acceleration
       "render" # For hardware acceleration
