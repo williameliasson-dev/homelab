@@ -17,5 +17,6 @@
     ./auto-rebuild.nix
     ./nfs.nix
     ./samba.nix
+    ./immich.nix
   ];
 }

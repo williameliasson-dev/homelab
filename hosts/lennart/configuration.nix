@@ -112,4 +112,12 @@
 
   # Samba Server
   services.samba-server.enable = true;
+
+  # Immich Server
+  services.immich-server = {
+    enable = true;
+    port = 2283;
+    mediaLocation = "/mnt/storage/immich";
+    openFirewall = true;
+  };
 }
