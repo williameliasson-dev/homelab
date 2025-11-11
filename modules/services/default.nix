@@ -1,8 +1,5 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{ ... }:
+{
   imports = [
     # Service modules will be imported here
     ./jellyfin.nix
@@ -15,8 +12,6 @@
     ./homepage.nix
     ./vaultwarden.nix
     ./auto-rebuild.nix
-    ./nfs.nix
-    ./samba.nix
     ./immich.nix
   ];
 }

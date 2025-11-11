@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  nixpkgs-stable,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -100,18 +94,6 @@
     flakePath = "/etc/nixos";
     hostName = "lennart";
   };
-
-  # NFS Server
-  services.nfs-server = {
-    enable = true;
-    exports = ''
-      /mnt/storage 192.168.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=985)
-      /mnt/storage 10.100.0.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=985)
-    '';
-  };
-
-  # Samba Server
-  services.samba-server.enable = true;
 
   # Immich Server
   services.immich-server = {
