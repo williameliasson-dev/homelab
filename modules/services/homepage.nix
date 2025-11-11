@@ -1,8 +1,5 @@
-{ config
-, lib
-, pkgs
-, ...
-}: {
+{ lib, ... }:
+{
   services.homepage-dashboard = {
     enable = true;
     openFirewall = true;
@@ -20,15 +17,22 @@
           {
             "Jellyfin" = {
               icon = "jellyfin.png";
-              href = "http://homelab.local:8096";
+              href = "http://192.168.0.105:8096";
               description = "Media Server";
             };
           }
           {
             "qBittorrent" = {
               icon = "qbittorrent.png";
-              href = "http://homelab.local:8080";
+              href = "http://192.168.0.105:8080";
               description = "Torrent Client";
+            };
+          }
+          {
+            "Immich" = {
+              icon = "immich.png";
+              href = "http://192.168.0.105:2283";
+              description = "Image & Video Backup";
             };
           }
         ];
@@ -38,14 +42,14 @@
           {
             "Blocky" = {
               icon = "blocky.png";
-              href = "http://homelab.local:4000";
+              href = "http://192.168.0.105:4000";
               description = "DNS Ad Blocker";
             };
           }
           {
             "Vaultwarden Admin" = {
               icon = "vaultwarden.png";
-              href = "http://homelab.local:8222/admin";
+              href = "http://192.168.0.105:8222/admin";
               description = "Password Manager Admin";
             };
           }
@@ -84,6 +88,6 @@
   systemd.services.homepage-dashboard.environment = {
     PORT = lib.mkForce "80";
     HOMEPAGE_VAR_PORT = lib.mkForce "80";
-    HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "homelab.local,localhost,127.0.0.1,192.168.0.109";
+    HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "192.168.0.105,localhost,127.0.0.1";
   };
 }
