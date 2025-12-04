@@ -13,5 +13,6 @@
     ./vaultwarden.nix
     ./auto-rebuild.nix
     ./immich.nix
+    ./couchdb.nix
   ];
 }

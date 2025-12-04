@@ -53,6 +53,13 @@
               description = "Password Manager Admin";
             };
           }
+          {
+            "CouchDB (Fauxton)" = {
+              icon = "couchdb.png";
+              href = "http://192.168.0.105:5984/_utils";
+              description = "Database for Obsidian Sync";
+            };
+          }
         ];
       }
     ];

@@ -27,6 +27,12 @@ in
     homelab
   ];
 
+  # CouchDB admin credentials for Obsidian LiveSync
+  "secrets/couchdb-admin.age".publicKeys = [
+    william
+    homelab
+  ];
+
   # Example: other secrets that might be needed
   # "secrets/api-keys.age".publicKeys = all;
   # "secrets/passwords.age".publicKeys = all;
