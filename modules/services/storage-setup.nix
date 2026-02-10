@@ -46,6 +46,11 @@
       chown -R couchdb:storage /mnt/storage/couchdb
       chmod -R 755 /mnt/storage/couchdb
 
+      # Erlang cookie must be owner-only (600)
+      if [ -f /mnt/storage/couchdb/data/.erlang.cookie ]; then
+        chmod 600 /mnt/storage/couchdb/data/.erlang.cookie
+      fi
+
       # Notes directory: owned by sftp, group storage, group-writable for NFS access
       if [ -d /mnt/storage/notes ]; then
         chown -R sftp:storage /mnt/storage/notes
