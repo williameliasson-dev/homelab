@@ -30,6 +30,12 @@
   # Networking
   networking = {
     hostName = "homelab";
+    hosts = {
+      "127.0.0.1" = [
+        "localhost"
+        "homelab"
+      ];
+    };
     networkmanager.enable = true;
     firewall = {
       enable = true;
